@@ -543,7 +543,7 @@ const fetchWinners = async () => {
 
 // Initial fetch and periodic updates
 fetchWinners();
-setInterval(fetchWinners, 30000); // Update every 30 seconds
+setInterval(fetchWinners, 300000); // Update every 30 seconds
 
   
   document.addEventListener('DOMContentLoaded', () => {

@@ -200,7 +200,7 @@ function init() {
     setButtonState(false, 'START SPIN', 'green');
     getUserInfo();
     gameArea.style.width = game.total * 102 + 'px';
-    gameArea.style.left = 5px`;
+    gameArea.style.left = 5px;
 
     panelSelect.addEventListener('change', (e) => {
         game.total = parseInt(e.target.value, 10);

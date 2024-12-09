@@ -217,34 +217,45 @@
 }
 
 .winner-banner {
-    width: 100%;
-    height: 50px;
-    background-color: #070606;
-    color: rgb(255, 255, 255);
-    font-size: 30px;
-    padding: 10px;
-    white-space: nowrap;
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
+  width: 100%;
+  height: 60px; /* Slightly taller for better visibility */
+  background: linear-gradient(90deg, #070606, #333333); /* Gradient for visual appeal */
+  color: #f8e71c; /* Bright yellow for better contrast */
+  font-size: 20px; /* Reduced size for a balanced layout */
+  padding: 10px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  text-align: center;
+}
+
+.winner-marquee {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scroll-left 120s linear infinite, pause-end 122s steps(1, end); /* Slower scrolling speed */
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(100%);
   }
-  
-  .winner-marquee {
-    display: inline-block;
-    padding-left: 100%;
-    animation: scroll-left 20s linear infinite;
+  100% {
+    transform: translateX(-100%);
   }
-  
-  @keyframes scroll-left {
-    0% {
-      transform: translateX(100%);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
+}
+
+@keyframes pause-end {
+  0%, 98% {
+    visibility: visible;
   }
+  100% {
+    visibility: hidden;
+  }
+}
+
   
   .btn-container {
     margin-top: 20px;

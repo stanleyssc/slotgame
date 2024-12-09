@@ -103,7 +103,7 @@ const getUserInfo = () => {
         return;
     }
 
-    fetch('https://slotgame-backend.onrender.com/user-info', {
+    fetch('https://slot-backend-f32n.onrender.com/user-info', {
         method: 'GET',
         headers: {
             Authorization: token,
@@ -134,7 +134,7 @@ async function updateBalanceOnServer(balance) {
             throw new Error('No authentication token found.');
         }
 
-        const response = await fetch("https://slotgame-backend.onrender.com/balance", {
+        const response = await fetch("https://slot-backend-f32n.onrender.com/balance", {
             method: "POST",
             headers: {
                 Authorization: token,
@@ -438,7 +438,7 @@ async function saveGameOutcome(user_id, betAmount, numberOfPanels, outcome, payo
     const token = getToken();
     try {
         const response = await fetch(
-          "https://slotgame-backend.onrender.com/outcome",
+          "https://slot-backend-f32n.onrender.com/outcome",
           {
             method: "POST",
             headers: {
@@ -521,7 +521,7 @@ function playSound() {
 // Function to fetch winners and update the banner
 const fetchWinners = async () => {
     try {
-      const response = await fetch('/winners');
+      const response = await fetch('https://slot-backend-f32n.onrender.com/winners');
       const data = await response.json();
       if (data.winners && data.winners.length > 0) {
         const winnersText = data.winners.join(' ');

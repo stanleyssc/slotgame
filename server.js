@@ -226,15 +226,21 @@ db.query(query, values, (err) => {
   });
 });
 
-// Endpoint to get the last 50 jackpot winners
 app.get('/winners', (req, res) => {
-  db.query('SELECT username, jackpot_type, payout, created_at FROM game_outcomes ORDER BY created_at DESC LIMIT 50', (err, result) => {
+  const query = `
+    SELECT users.username, game_outcomes.jackpot_type, game_outcomes.payout, game_outcomes.created_at
+    FROM game_outcomes
+    JOIN users ON game_outcomes.user_id = users.user_id
+    ORDER BY game_outcomes.created_at DESC
+    LIMIT 50
+  `;
+
+  db.query(query, (err, result) => {
     if (err) {
       console.error('Error fetching winners:', err);
       return res.status(500).json({ error: 'Error fetching winners' });
     }
 
-    // Map winners into a formatted message
     const winners = result.map((winner) => {
       return `${winner.username} has won a ${winner.jackpot_type} jackpot for N${winner.payout.toLocaleString()}!!!`;
     });
@@ -242,6 +248,7 @@ app.get('/winners', (req, res) => {
     res.status(200).json({ winners });
   });
 });
+
 
 // Add user-info endpoint
 app.get('/user-info', (req, res) => {

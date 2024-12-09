@@ -200,7 +200,7 @@ function init() {
     setButtonState(false, 'START SPIN', 'green');
     getUserInfo();
     gameArea.style.width = game.total * 102 + 'px';
-    gameArea.style.left = `${(document.body.clientWidth - (game.total * 102)) / 8}px`;
+    gameArea.style.left = 5px`;
 
     panelSelect.addEventListener('change', (e) => {
         game.total = parseInt(e.target.value, 10);
@@ -408,10 +408,10 @@ function calculateJackpot(bet, jackpotType) {
     let jackpotMultipliers = {};
     if (game.total ===4){
         jackpotMultipliers = {
-            four_whot: 500,
+            four_whot: 2000,
             three_whot: 300,
             two_whot: 50,
-            silver: 50,
+            silver: 100,
             gold: 200,
             platinum: 1000
         };
@@ -518,21 +518,33 @@ function playSound() {
     sound.play();
 }
 
-// Function to fetch winners and update the banner
 const fetchWinners = async () => {
-    try {
-      const response = await fetch('https://slot-backend-f32n.onrender.com/winners');
-      const data = await response.json();
-      if (data.winners && data.winners.length > 0) {
-        const winnersText = data.winners.join(' ');
-        document.getElementById('winner-banner').innerHTML = `<div class="winner-marquee">${winnersText}</div>`;
-      }
-    } catch (error) {
+  try {
+    const response = await fetch('https://slot-backend-f32n.onrender.com/winners');
+    const data = await response.json();
+
+    const bannerElement = document.getElementById('winner-banner');
+    const defaultMessage = "Welcome to Naija Gamers Hub. Get ready to win millions!!!";
+
+    if (data.winners && data.winners.length > 0) {
+      const winnersText = data.winners.join(' • ') + ' • ' + defaultMessage;
+      bannerElement.innerHTML = `<div class="winner-marquee">${winnersText}</div>`;
+    } else {
+      // Fallback message if no winners are retrieved
+      bannerElement.innerHTML = `<div class="winner-marquee">${defaultMessage}</div>`;
     }
-  };
-  
-  fetchWinners();
-  setInterval(fetchWinners, 30000);  // Update every 30 seconds (adjust as needed)
+  } catch (error) {
+    console.error('Error fetching winners:', error);
+    const bannerElement = document.getElementById('winner-banner');
+    const defaultMessage = "Welcome to Naija Gamers Hub. Get ready to win millions!!!";
+    bannerElement.innerHTML = `<div class="winner-marquee">${defaultMessage}</div>`;
+  }
+};
+
+// Initial fetch and periodic updates
+fetchWinners();
+setInterval(fetchWinners, 30000); // Update every 30 seconds
+
   
   document.addEventListener('DOMContentLoaded', () => {
     const rows = document.querySelectorAll('.outcome-table tbody tr');

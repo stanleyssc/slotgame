@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Naija Game Hub - Slot Game</title>
+    <link rel="stylesheet" href="index-style.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div id="winner-banner" class="winner-banner"></div>
+      
+    <div class="myDiv">Welcome to Naija Game</div>
+
+    <div class="coin-container" id="coinContainer"></div>
+
+    <div class="guide" id="betSelectGuide">Select your bet amount</div>
+    <div class="guide" id="panelSelectGuide">Select how many panels you want to play</div>
+    <div class="outcome-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Jackpot</th>
+                    <th>Condition</th>
+                    <th>3 Panels</th>
+                    <th>4 Panels</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-info="To win the Platinum Jackpot, all panels must return cards with the same number & suit.">
+                    <td>PLATINUM</td>
+                    <td>All cards same number & suit</td>
+                    <td>Bet × 500</td>
+                    <td>Bet × 1000</td>
+                </tr>
+                <tr data-info="To win the Ultimate Jackpot, all panels must return 4 Whot cards at the end of the spinning.">
+                    <td>ULTIMATE</td>
+                    <td>4 Whot cards</td>
+                    <td>Bet × 200</td>
+                    <td>Bet × 500</td>
+                </tr>
+                <tr data-info="To win the Diamond Jackpot, all panels must return 3 Whot cards.">
+                    <td>DIAMOND</td>
+                    <td>3 Whot cards</td>
+                    <td>Bet × 200</td>
+                    <td>Bet × 300</td>
+                </tr>
+                <tr data-info="To win the Gold Jackpot, all panels must return cards with the same number.">
+                    <td>GOLD</td>
+                    <td>All cards same number</td>
+                    <td>Bet × 100</td>
+                    <td>Bet × 200</td>
+                </tr>
+                <tr data-info="To win the Silver Jackpot, all panels must return cards with the same shape.">
+                    <td>SILVER</td>
+                    <td>All cards same shape</td>
+                    <td>Bet × 50</td>
+                    <td>Bet × 50</td>
+                </tr>
+                <tr data-info="To win the Bronze Jackpot, all panels must return 2 Whot cards.">
+                    <td>BRONZE</td>
+                    <td>2 Whot cards</td>
+                    <td>Bet × 30</td>
+                    <td>Bet × 50</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hover-window" class="hidden"></div>
+    
+    
+
+    <!-- Buttons for navigation -->
+    <div class="btn-container">
+        <button id="backToHome" class="navtools btn-home">Back to Home Page</button>
+        <button id="logoutButton" class="navtools btn-logout">Logout</button>
+    </div>
+
+    <script>
+        document.getElementById('backToHome').addEventListener('click', () => {
+            window.location.href = 'index.html'; // Redirect to the home page
+        });
+
+        document.getElementById('logoutButton').addEventListener('click', () => {
+            window.location.href = 'login.html'; // Redirect to the login page
+        });
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>
